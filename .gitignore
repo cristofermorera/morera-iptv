@@ -1,0 +1,9 @@
+node_modules/
+.local/
+.env
+.env.*
+!.env.example
+*.m3u
+*.m3u8
+*.pem
+*.key

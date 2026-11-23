@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexo IPTV</title>
+<link rel="stylesheet" href="/style.css">
+<script defer src="/hls.js"></script>
+<script defer src="/app.js"></script>
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <a href="/" class="brand"><span class="brand-icon" data-icon="signal"></span><span>Nexo <b>IPTV</b></span></a>
+    <p class="nav-label">BIBLIOTECA</p>
+    <nav aria-label="Biblioteca">
+      <button class="nav active" data-view="all"><span data-icon="grid"></span> Visão geral</button>
+      <button class="nav" data-view="live"><span data-icon="tv"></span> Ao vivo</button>
+      <button class="nav" data-view="movies"><span data-icon="film"></span> Filmes</button>
+      <button class="nav" data-view="series"><span data-icon="layers"></span> Séries</button>
+      <button class="nav" data-view="favorites"><span data-icon="heart"></span> Favoritos</button>
+    </nav>
+    <div class="sidebar-footer"><span data-icon="lock"></span> Sessão local</div>
+  </aside>
+  <main>
+    <header class="top"><span>Minha biblioteca</span><button class="primary" id="open"><span data-icon="plus"></span> Adicionar lista</button></header>
+    <section class="intro"><div><h1>Painel IPTV<span>.</span></h1><p>Gerencie e assista ao conteúdo da sua lista.</p></div><span class="status" id="connection"><i></i> Sem lista conectada</span></section>
+    <div class="stats">
+      <button data-view="live" class="stat blue"><span class="tile" data-icon="tv"></span><span>Canais ao vivo<strong id="live-count">0</strong></span></button>
+      <button data-view="movies" class="stat purple"><span class="tile" data-icon="film"></span><span>Filmes<strong id="movies-count">0</strong></span></button>
+      <button data-view="series" class="stat cyan"><span class="tile" data-icon="layers"></span><span>Séries<strong id="series-count">0</strong></span></button>
+      <button data-view="favorites" class="stat pink"><span class="tile" data-icon="heart"></span><span>Favoritos<strong id="favorites-count">0</strong></span></button>
+    </div>
+    <section class="panel categories" id="categories" aria-labelledby="category-title" hidden>
+      <div class="panel-title">
+        <h2 id="category-title">Categorias</h2>
+        <label class="search" id="category-search" hidden><span data-icon="search"></span><input id="category-query" type="search" placeholder="Buscar categoria" aria-label="Buscar categoria"></label>
+      </div>
+      <div class="category-list" id="category-list"></div>
+    </section>
+    <div class="dashboard">
+      <section class="panel player">
+        <div class="panel-title"><h2>Reprodutor</h2><span class="player-status" id="player-status">Em espera</span></div>
+        <div class="screen">
+          <div class="placeholder" id="placeholder"><div class="orbit"><span data-icon="play"></span></div><h3>Pronto para assistir?</h3><p>Adicione uma lista e selecione um canal.</p></div>
+          <video id="video" controls playsinline hidden></video>
+        </div>
+        <div class="now"><span class="tile" data-icon="signal"></span><div><strong id="now">Nenhum canal selecionado</strong><p id="player-detail" aria-live="polite">O conteúdo selecionado será exibido aqui.</p></div></div>
+      </section>
+      <section class="panel library">
+        <div class="panel-title"><h2 id="view-title">Todos os canais</h2><span class="player-status" id="total">0 itens</span></div>
+        <div class="filters"><label class="search"><span data-icon="search"></span><input id="search" type="search" placeholder="Buscar na biblioteca" aria-label="Buscar na biblioteca"></label></div>
+        <div class="items" id="items"></div>
+      </section>
+    </div>
+  </main>
+</div>
+<dialog id="dialog">
+  <div class="dialog-head"><h2>Adicionar lista</h2><button class="icon-button" id="close" aria-label="Fechar"><span data-icon="close"></span></button></div>
+  <form id="source">
+    <label>Tipo de conexão<select id="mode" name="mode"><option value="xtream">Servidor Xtream Codes</option><option value="url">Link M3U / M3U8</option><option value="file">Arquivo de lista M3U</option></select></label>
+    <label id="url-field"><span id="url-label">Endereço do servidor</span><input name="url" id="url" type="url" placeholder="https://servidor.exemplo:8080" required></label>
+    <div class="credentials" id="credentials"><label>Usuário<input name="username" id="username" autocomplete="off" required></label><label>Senha<input name="password" id="password" type="password" autocomplete="off" required></label></div>
+    <label id="file-field" hidden>Arquivo<input name="file" id="file" type="file" accept=".m3u,.m3u8,audio/x-mpegurl,application/vnd.apple.mpegurl" disabled></label>
+    <label>DNS da conexão<select name="dns"><option value="cloudflare">Cloudflare (DNS sobre HTTPS)</option><option value="system">DNS do sistema</option></select></label>
+    <p class="error" id="error" role="alert"></p>
+    <button class="primary" type="submit" id="submit">Carregar lista</button>
+  </form>
+</dialog>
+</body>
+</html>
+
+
+
