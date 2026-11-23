@@ -1,4 +1,4 @@
-# Nexo IPTV
+# Morera IPTV
 
 A [plataforma React e Spring Boot](platform/README.md) está em `platform/`. Este guia descreve a versão original em Node.js, mantida para a migração.
 
@@ -13,7 +13,7 @@ npm ci
 npm start
 ```
 
-Abra [Nexo IPTV](http://127.0.0.1:4173) e clique em **Adicionar lista**.
+Abra [Morera IPTV](http://127.0.0.1:4173) e clique em **Adicionar lista**.
 
 - **Servidor Xtream Codes** aceita o endereço base, incluindo porta quando exigida, usuário e senha.
 - **Link M3U / M3U8** aceita o endereço completo fornecido pelo serviço.
